@@ -1,0 +1,31 @@
+Retrieval-Augmented Generation (RAG) Overview
+
+What is RAG?
+Retrieval-Augmented Generation (RAG) is a technique that combines a retrieval system with a generative language model. Instead of relying only on what the model learned during training, RAG first searches an external knowledge source (like documents, a database, or a vector store) for relevant information, then feeds that retrieved content to the language model along with the user's question. This allows the model to produce more accurate, up-to-date, and grounded answers.
+
+Why use RAG?
+1. Reduces hallucination - answers are grounded in real source text rather than the model's memory.
+2. Keeps information current - you can update the document store without retraining the model.
+3. Provides transparency - the system can cite exactly which document or passage supported an answer.
+4. Works well for private or domain-specific knowledge that the model was never trained on.
+
+How RAG typically works:
+1. Document Ingestion - Text documents are loaded and split into smaller chunks.
+2. Embedding - Each chunk is converted into a numerical vector using an embedding model.
+3. Storage - These vectors are stored in a vector database (e.g., FAISS, Chroma, Pinecone).
+4. Retrieval - When a user asks a question, it is embedded and compared against stored vectors to find the most relevant chunks.
+5. Generation - The retrieved chunks are passed to a language model along with the original question, and the model generates a final answer grounded in that context.
+
+Example Use Cases:
+- Customer support bots that answer questions from a company's internal documentation.
+- Research assistants that summarize and answer questions about scientific papers.
+- Legal or medical Q&A tools that ground answers in verified source documents.
+- Internal knowledge base search for organizations.
+
+Tips for Better RAG Performance:
+- Keep document chunks small enough to be specific but large enough to retain context (commonly 200-500 words per chunk).
+- Overlap chunks slightly so information isn't cut off awkwardly at boundaries.
+- Use high-quality embeddings suited to your domain and language.
+- Regularly refresh your document store as new information becomes available.
+
+This file can be uploaded to a RAG Document Q&A application to test document ingestion, chunking, embedding, and retrieval-based question answering.
